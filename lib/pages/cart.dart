@@ -29,7 +29,7 @@ class _CartState extends State<Cart> {
               Expanded(
                 child: ListTile(
                   title: Text("Total"),
-                  subtitle: Text("\$238"),
+                  subtitle: Text("\₹ 238"),
                 ),
               ),
               Expanded(

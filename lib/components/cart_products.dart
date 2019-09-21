@@ -17,10 +17,10 @@ class _Cart_productsState extends State<Cart_products> {
     {
       "name": "Shoes",
       "picture": "images/products/shoe1.jpg",
-      "price": 85,
+      "price": 854,
       "size": "M",
       "color": "Red",
-      "quantity": 1,
+      "quantity": 2,
     },
   ];
 
@@ -31,7 +31,7 @@ class _Cart_productsState extends State<Cart_products> {
           return Single_cart_product(
             cart_prod_name: products_on_the_cart[index]["name"],
             cart_prod_color: products_on_the_cart[index]["color"],
-            cart_prod_qty: products_on_the_cart[index]["qty"],
+            cart_prod_qty: products_on_the_cart[index]["quantity"],
             cart_prod_size: products_on_the_cart[index]["size"],
             cart_prod_price: products_on_the_cart[index]["price"],
             cart_prod_picture: products_on_the_cart[index]["picture"],
@@ -57,60 +57,81 @@ class Single_cart_product extends StatelessWidget {
     this.cart_prod_qty,
     this.cart_prod_size,
   });
+
+  @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+
     return Card(
-      child: ListTile(
-        leading: Image.asset(cart_prod_picture, width: 80.0, height: 80.0),
+      child: Row(
+        children: <Widget>[
+          new SizedBox(
+            width: (screenSize.width / 5) * 4.3,
+            child: ListTile(
+              //Leading Section
+              leading: new Image.asset(
+                cart_prod_picture,
+                width: 80.0,
+                height: 80.0,
+              ),
+              //Title Section
+              title: new Text(cart_prod_name),
+              //Subtitle Section
+              subtitle: new Column(
+                children: <Widget>[
+                  new Row(
+                    children: <Widget>[
+                      new Padding(
+                          padding: const EdgeInsets.all(0.0),
+                          child: new Text("Size:")),
+                      new Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: new Text(
+                            cart_prod_size,
+                            style: TextStyle(color: Colors.red),
+                          )),
 
-        //====Title section
-        title: Text(cart_prod_name),
+                      //For Product Color
+                      new Padding(
+                        padding: const EdgeInsets.fromLTRB(20.0, 8.0, 8.0, 8.0),
+                        child: new Text("Color:"),
+                      ),
+                      new Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: new Text(cart_prod_color,
+                            style: TextStyle(color: Colors.red)),
+                      )
+                    ],
+                  ),
 
-        //Subtitle section
-        subtitle: Column(
-          children: <Widget>[
-            //row inside the column
-            Row(children: <Widget>[
-              //===this secction of for the peoductsize
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text("Size: "),
+                  // This is for product price
+                  new Container(
+                    alignment: Alignment.topLeft,
+                    child: new Text(
+                      "$cart_prod_price\ ₹",
+                      style: TextStyle( 
+                          fontSize: 17.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.red),
+                    ),
+                  )
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child:
-                    Text(cart_prod_size, style: TextStyle(color: Colors.red)),
-              ),
-
-//===this secction of for the product color
-              Padding(
-                padding: const EdgeInsets.fromLTRB(2.0, 8.0, 8.0, 8.0),
-                child: Text("Color"),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(4.0),
-                child:
-                    Text(cart_prod_color, style: TextStyle(color: Colors.red)),
-              ),
-            ]
             ),
-            //this section is for product price
-            Container(
-                alignment: Alignment.topLeft,
-                child: Text("$cart_prod_price",
-                  style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.red),
-                ))
-          ],
-        ),
-        trailing:Column(children: <Widget>[
-          IconButton(icon:Icon(Icons.arrow_drop_up),onPressed:(){}),
-
-        ],)
+          ),
+          new SizedBox(
+            width: 49.0,
+            child: new Column(
+                children: <Widget>[
+                  new IconButton(icon: Icon(Icons.arrow_drop_up), onPressed: () {}),
+                  new Text("$cart_prod_qty"),
+                  new IconButton(icon: Icon(Icons.arrow_drop_down), onPressed: () {})
+                ],
+            )
+          )
+        ],
       ),
     );
   }
-
 
 }

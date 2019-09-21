@@ -5,6 +5,8 @@ import '../components/horizontal_listview.dart';
 import '../components/products.dart';
 import 'cart.dart';
 import 'home.dart';
+import './login.dart';
+import './auth.dart';
 
 
 class HomePage extends StatefulWidget{
@@ -51,18 +53,18 @@ class _HomePageState extends State<HomePage>{
         child:ListView(children: <Widget>[
           //header
           UserAccountsDrawerHeader(
-            accountName:Text("Ash"),
-            accountEmail:Text("ash@gmail.com"),
+            accountName:Text(name),
+            accountEmail:Text(email),
             currentAccountPicture:GestureDetector(
               child: CircleAvatar(
-                backgroundColor: Colors.grey,
-                child:Icon(Icons.person,color:Colors.white)
+                backgroundImage: NetworkImage(imageUrl),
               ),
             ),
             decoration: BoxDecoration(
               color:Colors.red,
             ),
           ),//1
+          
           //body
 
           InkWell(   //used to wrap ListTile dat doesnt hv ontap //any child of inkwell widget is tappable
@@ -89,7 +91,7 @@ class _HomePageState extends State<HomePage>{
             ) 
           ),
 
-                    InkWell(   //used to wrap ListTile dat doesnt hv ontap
+            InkWell(   //used to wrap ListTile dat doesnt hv ontap
             onTap:(){
                Navigator.push(context, MaterialPageRoute(builder:(context)=>Cart()));
             },
@@ -126,10 +128,28 @@ class _HomePageState extends State<HomePage>{
 
 
 
+          RaisedButton(
+            onPressed: () {
+              signOutGoogle();
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) {return LoginPage();}), ModalRoute.withName('/'));
+            },
+            color: Colors.deepPurple,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Sign Out',
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+            ),
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40)),
+          )
+
+
           ],
           )
       ),
-
       
       body:Column(children: <Widget>[
         //imagee carousel

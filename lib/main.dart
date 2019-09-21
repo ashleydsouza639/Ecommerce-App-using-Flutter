@@ -12,18 +12,8 @@ void main(){
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:HomePage(),
+      home: LoginPage(),
     )
   );
 }
 
-/*
-   firebase_auth: ^0.11.1+11
-  cloud_firestore: ^0.12.7
-  google_sign_in: ^4.0.7
-  shared_preferences: ^0.5.3+4
-  fluttertoast: ^3.1.3
-
-
- 
- */
