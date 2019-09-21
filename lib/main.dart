@@ -6,12 +6,21 @@ import 'components/products.dart';
 import'pages/cart.dart';
 
 import './pages/login.dart';
-import './pages/home.dart';
+//import './pages/home.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 
 void main(){
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
+<<<<<<< HEAD
+=======
+       title: 'Flutter Login',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+>>>>>>> frontend done
       home: LoginPage(),
     )
   );

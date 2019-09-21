@@ -5,6 +5,18 @@ emulator -list-avds
 
 To open a emulator
 
+git push -f origin master
+git remote set-url origin https://github.com/ashleydsouza639/ecommerce-app-using-flutter.git
+git remote add origin https://github.com/ashleydsouza639/Ecommerce-App-using-Flutter.git
+git commit -m msg
+
+
+echo "# ecommerce-app-using-flutter" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/ashleydsouza639/ecommerce-app-using-flutter.git
+git push -u origin master
 
 
 C:\Users\arif>keytool -list -v -alias androiddebugkey -keystore %USERPROFILE%\.a

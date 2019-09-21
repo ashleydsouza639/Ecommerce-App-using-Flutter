@@ -7,7 +7,10 @@ import 'cart.dart';
 import 'home.dart';
 import './login.dart';
 import './auth.dart';
+<<<<<<< HEAD
 
+=======
+>>>>>>> frontend done
 
 class HomePage extends StatefulWidget{
   _HomePageState createState() => _HomePageState();
@@ -27,7 +30,7 @@ class _HomePageState extends State<HomePage>{
            AssetImage("images/m2.jpg"),
            AssetImage("images/w1.jpeg"),
           AssetImage("images/w3.jpeg"),
-           AssetImage("images/w4.jperg"),
+           
       ],
       autoplay: false,
     //  animationCurve: Curves.fastOutSlowIn,
@@ -125,7 +128,24 @@ class _HomePageState extends State<HomePage>{
               leading:Icon(Icons.help),
             ) 
           ),
-
+          
+          RaisedButton(
+            onPressed: () {
+              signOutGoogle();
+              Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) {return LoginPage();}), ModalRoute.withName('/'));
+            },
+            color: Colors.deepPurple,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                'Sign Out',
+                style: TextStyle(fontSize: 25, color: Colors.white),
+              ),
+            ),
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(40)),
+          )
 
 
           RaisedButton(
