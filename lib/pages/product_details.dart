@@ -9,6 +9,7 @@ class ProductDetails extends StatefulWidget {
   final product_detail_old_price;
   final product_detail_picture;
 
+  //constructor called in components/products.dart
   ProductDetails(
       {this.product_detail_name,
       this.product_detail_new_price,
