@@ -12,10 +12,7 @@ dependencies:
   google_sign_in: ^4.4.4
   shared_preferences: ^0.5.7
   cloud_firestore: ^0.13.5
-<<<<<<< HEAD
-=======
 
->>>>>>> frontend done
 
 
   # The following adds the Cupertino Icons font to your application.
