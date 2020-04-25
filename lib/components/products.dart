@@ -1,6 +1,8 @@
+////Single product page
 import 'package:flutter/material.dart';
 import '../pages/product_details.dart';
 
+//Recent Products
 class Products extends StatefulWidget {
   @override
   _ProductsState createState() => _ProductsState();
@@ -66,12 +68,14 @@ class _ProductsState extends State<Products> {
   }
 }
 
+//Single product page
 class Single_prod extends StatelessWidget {
   final prod_name;
   final prod_picture;
   final prod_old_price;
   final prod_price;
 
+  //constuctor called above
   Single_prod({
     this.prod_name,
     this.prod_picture,
