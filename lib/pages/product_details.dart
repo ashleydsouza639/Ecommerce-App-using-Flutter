@@ -1,7 +1,7 @@
-//display product page details
+//display single product page dat comes after clicking a recent product
 import 'package:flutter/material.dart';
 import 'home.dart';
-
+import './insertdata.dart';
 class ProductDetails extends StatefulWidget {
   _ProductDetailsState createState() => _ProductDetailsState();
   final product_detail_name;
@@ -171,13 +171,18 @@ class _ProductDetailsState extends State<ProductDetails> {
 //           ====buy button button============
                 Expanded(
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed:(){
+                         Navigator.push(context, MaterialPageRoute(builder:(context)=>InsertData()));
+                    },
                     color: Colors.red,
                     textColor: Colors.white,
                     elevation: 0.2,
-                    child: new Text("But Now"),
+                    child: new Text("Buy Now"),
                   ),
                 ),
+
+
+
 
                 IconButton(
                     icon: Icon(Icons.add_shopping_cart), onPressed: () {}),

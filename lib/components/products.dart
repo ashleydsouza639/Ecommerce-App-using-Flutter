@@ -1,4 +1,4 @@
-////Single product page
+////Recent product component display on home page
 import 'package:flutter/material.dart';
 import '../pages/product_details.dart';
 
@@ -83,6 +83,7 @@ class Single_prod extends StatelessWidget {
     this.prod_price,
   });
 
+//displauuy recent  products
   @override 
   Widget build(BuildContext context) {
     return Card(

@@ -7,6 +7,7 @@ import 'cart.dart';
 import 'home.dart';
 import './login.dart';
 import './auth.dart';
+import './insertdata.dart';
 
 class HomePage extends StatefulWidget{
   _HomePageState createState() => _HomePageState();
@@ -89,7 +90,7 @@ class _HomePageState extends State<HomePage>{
             ) 
           ),
 
-                    InkWell(   //used to wrap ListTile dat doesnt hv ontap
+            InkWell(   //used to wrap ListTile dat doesnt hv ontap
             onTap:(){
                Navigator.push(context, MaterialPageRoute(builder:(context)=>Cart()));
             },
@@ -117,13 +118,18 @@ class _HomePageState extends State<HomePage>{
           ),
 
           InkWell(   //used to wrap ListTile dat doesnt hv ontap
-            onTap:(){},
+            onTap:(){
+              Navigator.push(context, MaterialPageRoute(builder:(context)=>InsertData()));
+            },
             child:ListTile(
-              title:Text("About"),
+              title:Text("Contact US"),
               leading:Icon(Icons.help),
             ) 
           ),
           
+
+               
+
           RaisedButton(
             onPressed: () {
               signOutGoogle();
