@@ -1,3 +1,4 @@
+//display product page details
 import 'package:flutter/material.dart';
 import 'home.dart';
 
