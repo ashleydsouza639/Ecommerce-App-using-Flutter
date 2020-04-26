@@ -1,4 +1,5 @@
 //https://github.com/sbis04/sign_in_flutter/blob/master/lib/sign_in.dart
+//https://blog.codemagic.io/firebase-authentication-google-sign-in-using-flutter/
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
