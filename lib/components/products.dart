@@ -49,6 +49,7 @@ class _ProductsState extends State<Products> {
     },
   ];
 
+//display RecentProducts
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -68,7 +69,7 @@ class _ProductsState extends State<Products> {
   }
 }
 
-//Single product page
+//Single recent product
 class Single_prod extends StatelessWidget {
   final prod_name;
   final prod_picture;
@@ -83,7 +84,7 @@ class Single_prod extends StatelessWidget {
     this.prod_price,
   });
 
-//displauuy recent  products
+//displauuy recent single product
   @override 
   Widget build(BuildContext context) {
     return Card(
@@ -92,7 +93,7 @@ class Single_prod extends StatelessWidget {
           child: Material(
             child: InkWell(
               onTap: () => Navigator.of(context).push(new MaterialPageRoute(
-                  //here we are passig the values of the product to the pruduct ddetails page
+                  //here we are passig the values of the product to the pruduct ddetails page saved in pages folder
                   builder: (context) => new ProductDetails( product_detail_name : prod_name,
                                                              product_detail_new_price:  prod_price,
                                                              product_detail_old_price:  prod_old_price,

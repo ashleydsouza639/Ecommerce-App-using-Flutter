@@ -42,6 +42,7 @@ class Category extends StatelessWidget {
   final String image_location;
   final String image_caption;
 
+  //cnstrucor called above
   Category({this.image_location, this.image_caption});
 
   @override

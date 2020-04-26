@@ -40,6 +40,7 @@ class _Cart_productsState extends State<Cart_products> {
   }
 }
 
+//constructor called above
 class Single_cart_product extends StatelessWidget {
   @override
   final cart_prod_name;
