@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+
 # Ecommerce-App-using-Flutter
 =======
-# d
+
 
 A new Flutter project.
 
