@@ -247,15 +247,21 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import './login.dart';
 import './auth.dart'; //we get name,email values from here
 import '../components/basicshape.dart';
+import './product_details.dart';
 
 class InsertData extends StatefulWidget {
   @override
   _InsertDataState createState() => _InsertDataState();
+  //constructor called in product_details
+  final prod_name;
+  final prod_price;
+  InsertData({this.prod_name, this.prod_price});
 }
 
 class _InsertDataState extends State<InsertData> {
   String _locationMessage = "";
   String _confirmMessage = "";
+  String s = "";
 
   FlutterLocalNotificationsPlugin fltrNotification;
 
@@ -316,6 +322,12 @@ class _InsertDataState extends State<InsertData> {
               createRecord();
             },
           ),
+          RaisedButton(
+            child: Text('Delete order'),
+            onPressed: () {
+              deleteRecord();
+            },
+          ),
           InkWell(
               //used to wrap ListTile dat doesnt hv ontap //any child of inkwell widget is tappable
               child: ListTile(
@@ -365,19 +377,31 @@ class _InsertDataState extends State<InsertData> {
   }
 
   void createRecord() async {
-    await databaseReference
-        .collection("users")
-        .document("1")
-        .setData({'name': name, 'email': email});
+    // await databaseReference
+    //     .collection("users")
+    //     .document("1")
+    //     .setData({'name': name, 'email': email});
+    DocumentReference ref = Firestore.instance.collection('users').document();
 
-    DocumentReference ref = await databaseReference
-        .collection("users")
-        .add({'name': name, 'email': email});
-    print(ref.documentID);
-
+    ref.setData({
+      'name': name,
+      'email': email,
+      'id': ref.documentID,
+      'productName': widget.prod_name,
+      'productPrice': widget.prod_price
+    });
+    s = ref.documentID;
     setState(() {
       _confirmMessage = "Your order is confirmed. We will get back to you";
     });
+  }
+
+  void deleteRecord() {
+    try {
+      databaseReference.collection('users').document(s).delete();
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
   Future notificationSelected(String payload) async {

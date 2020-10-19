@@ -44,7 +44,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 child: Container(
                   color: Colors.white,
                   child: Image.asset(widget
-                      .product_detail_picture), //widget is like super keyword java used to acces attribute of parent class
+                      .product_detail_picture), //widget is like super keyword java used to acces attribute of parent class(above class properties)
                 ),
                 footer: Container(
                   color: Colors.white,
@@ -172,7 +172,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                 Expanded(
                   child: MaterialButton(
                     onPressed:(){
-                         Navigator.push(context, MaterialPageRoute(builder:(context)=>InsertData()));
+                         Navigator.push(context, MaterialPageRoute(builder:(context)=>InsertData(prod_name:widget.product_detail_name,prod_price:widget.product_detail_new_price)));
                     },
                     color: Colors.red,
                     textColor: Colors.white,
