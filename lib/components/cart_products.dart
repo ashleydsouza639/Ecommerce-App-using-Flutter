@@ -7,11 +7,11 @@ class Cart_products extends StatefulWidget {
 class _Cart_productsState extends State<Cart_products> {
   var products_on_the_cart = [
     {
-      "name": "Shoes",
-      "picture": "images/products/shoe1.jpg",
+ma      "name": "Blazer",
+      "picture": "images/products/blazer1.jpeg",
       "price": 85,
       "size": "M",
-      "color": "Red",
+      "color": "Black",
       "quantity": 1,
     },
     {
@@ -110,7 +110,7 @@ class Single_cart_product extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: new Text(
                       "$cart_prod_price\ ₹",
-                      style: TextStyle( 
+                      style: TextStyle(
                           fontSize: 17.0,
                           fontWeight: FontWeight.bold,
                           color: Colors.red),
@@ -121,18 +121,18 @@ class Single_cart_product extends StatelessWidget {
             ),
           ),
           new SizedBox(
-            width: 49.0,
-            child: new Column(
+              width: 49.0,
+              child: new Column(
                 children: <Widget>[
-                  new IconButton(icon: Icon(Icons.arrow_drop_up), onPressed: () {}),
+                  new IconButton(
+                      icon: Icon(Icons.arrow_drop_up), onPressed: () {}),
                   new Text("$cart_prod_qty"),
-                  new IconButton(icon: Icon(Icons.arrow_drop_down), onPressed: () {})
+                  new IconButton(
+                      icon: Icon(Icons.arrow_drop_down), onPressed: () {})
                 ],
-            )
-          )
+              ))
         ],
       ),
     );
   }
-
 }

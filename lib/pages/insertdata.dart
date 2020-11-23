@@ -246,7 +246,6 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 import './login.dart';
 import './auth.dart'; //we get name,email values from here
-import '../components/basicshape.dart';
 import './product_details.dart';
 
 class InsertData extends StatefulWidget {
@@ -259,6 +258,9 @@ class InsertData extends StatefulWidget {
 }
 
 class _InsertDataState extends State<InsertData> {
+  var _num;
+  final numController = new TextEditingController();
+
   String _locationMessage = "";
   String _confirmMessage = "";
   String s = "";
@@ -285,7 +287,10 @@ class _InsertDataState extends State<InsertData> {
     var generalNotificationDetails =
         new NotificationDetails(androidDetails, iSODetails);
 
-    await fltrNotification.show(0, "Ecommerce", "Welcome to our ecommerce App",
+    await fltrNotification.show(
+        0,
+        "Ecommerce",
+        "Your order is confirmed. mobile No: $_num",
         generalNotificationDetails);
   }
 
@@ -304,8 +309,6 @@ class _InsertDataState extends State<InsertData> {
     });
   }
 
-  final databaseReference = Firestore.instance;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -313,13 +316,17 @@ class _InsertDataState extends State<InsertData> {
         title: Text('Confirm Order'),
       ),
       body: Center(
-          child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: ListView(
+        padding: const EdgeInsets.all(8),
         children: <Widget>[
           RaisedButton(
             child: Text('Confirm order'),
             onPressed: () {
               createRecord();
+              setState(() {
+                _num = numController.text;
+              });
+              _showNotification();
             },
           ),
           RaisedButton(
@@ -338,6 +345,11 @@ class _InsertDataState extends State<InsertData> {
               child: ListTile(
             title: Text("EMAIL: " + email),
           )),
+          TextField(
+              keyboardType: TextInputType.number, //.text
+              controller: numController,
+              decoration:
+                  InputDecoration(hintText: 'Enter your mobile number')),
           InkWell(
               //used to wrap ListTile dat doesnt hv ontap //any child of inkwell widget is tappable
               child: ListTile(
@@ -347,12 +359,6 @@ class _InsertDataState extends State<InsertData> {
             child: Text('Get Location'),
             onPressed: () {
               _getCurrentLocation();
-            },
-          ),
-          RaisedButton(
-            child: Text('Flutter Notification'),
-            onPressed: () {
-              _showNotification();
             },
           ),
           InkWell(
@@ -366,15 +372,12 @@ class _InsertDataState extends State<InsertData> {
               child: ListTile(
             title: Text(_confirmMessage),
           )),
-          RaisedButton(
-            child: Text('Basic Graphic Primitives'),
-            onPressed: () => Navigator.push(
-                context, MaterialPageRoute(builder: (context) => BasicShape())),
-          ),
         ],
       )), //center
     );
   }
+
+  final databaseReference = Firestore.instance;
 
   void createRecord() async {
     // await databaseReference
@@ -387,6 +390,7 @@ class _InsertDataState extends State<InsertData> {
       'name': name,
       'email': email,
       'id': ref.documentID,
+      //'address': _locationMessage,
       'productName': widget.prod_name,
       'productPrice': widget.prod_price
     });
@@ -397,6 +401,7 @@ class _InsertDataState extends State<InsertData> {
   }
 
   void deleteRecord() {
+    //final databaseReference = Firestore.instance;
     try {
       databaseReference.collection('users').document(s).delete();
     } catch (e) {
