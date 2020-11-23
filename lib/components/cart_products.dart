@@ -7,7 +7,7 @@ class Cart_products extends StatefulWidget {
 class _Cart_productsState extends State<Cart_products> {
   var products_on_the_cart = [
     {
-ma      "name": "Blazer",
+      "name": "Blazer",
       "picture": "images/products/blazer1.jpeg",
       "price": 85,
       "size": "M",
